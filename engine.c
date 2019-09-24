@@ -1,5 +1,10 @@
 #include "monty.h"
-
+/**
+ * main - engine to integrate the monty interpreter
+ * @arc: argument count
+ * @arv: argument vector
+ * Return: 0 on success otherwise EXIT_FAILURE
+ */
 int main(int arc, char *arv[])
 {
 	instruction_t ins_arr[] = {{"push", _push}, {"pall", _pall}};
@@ -35,5 +40,5 @@ int main(int arc, char *arv[])
 		}
 		line++;
 	}
+	return (0);
 }
-
