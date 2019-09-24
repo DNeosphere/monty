@@ -7,7 +7,10 @@ int is_num(char *token)
 	while (token[i] != '\0')
 	{
 		if (token[i] >= 48 && token[i] <= 57)
+		{
+			i++;
 			continue;
+		}
 		else
 			return (res = 0);
 		i++;
