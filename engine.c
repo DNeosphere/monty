@@ -20,7 +20,7 @@ int main(int arc, char *arv[])
 {
 	instruction_t ins_arr[] = {{"push", _push}, {"pall", _pall}, {"pint", _pint},
 	{"nop", _nop}, {"pop", _pop}, {"add", _add}, {"swap", _swap}, {"sub", _sub},
-	{"div", _div}, {"mul", _mul}, {"mod", _mod}};
+	{"div", _div}, {"mul", _mul}, {"mod", _mod}, {"#", _nop}};
 	FILE *file_op;
 	stack_t *stack = NULL;
 	size_t size = 30;
@@ -35,7 +35,7 @@ int main(int arc, char *arv[])
 			continue;
 		}
 		i = 0;
-		while (i < 12)
+		while (i < 13)
 		{
 			if (strcmp(token, ins_arr[i].opcode) == 0)
 			{
@@ -48,7 +48,7 @@ int main(int arc, char *arv[])
 				ins_arr[i].f(&stack, line);
 				break;
 			}
-			else if (i == 10)
+			else if (i == 11)
 				free_err(file_op, buff, stack, line, 1, token);
 			i++;
 		}
