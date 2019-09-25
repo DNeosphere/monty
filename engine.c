@@ -29,6 +29,11 @@ int main(int arc, char *arv[])
 	while (getline(&buff, &size, file_op) != EOF)
 	{
 		token = strtok(buff, " \t\n\r");
+		if (token == NULL)
+		{
+			line++;
+			continue;
+		}
 		i = 0;
 		while (i < 3)
 		{
@@ -40,6 +45,9 @@ int main(int arc, char *arv[])
 					if (is_num(token_push) == 0)
 					{
 						fprintf(stderr, "L%d: usage: push integer\n", line);
+						fclose(file_op);
+						free(buff);
+						free_dlistint(stack);
 						exit(EXIT_FAILURE);
 					}
 					value = atoi(token_push);
@@ -50,11 +58,33 @@ int main(int arc, char *arv[])
 			else if (i == 1)
 			{
 				fprintf(stderr, "L%d: unknown instruction %s\n", line, token);
+				fclose(file_op);
+				free(buff);
+				free_dlistint(stack);
 				exit(EXIT_FAILURE);
 			}
 			i++;
 		}
 		line++;
 	}
+	fclose(file_op);
+	free_dlistint(stack);
+	free(buff);
 	return (0);
+}
+/**
+ * free_dlistint - frees memory from a dlinked list
+ * @head: pointer to the first node
+ **/
+void free_dlistint(stack_t *head)
+{
+	stack_t *next, *current;
+
+	current = head;
+	while (current)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
 }

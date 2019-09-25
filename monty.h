@@ -6,8 +6,11 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+
+/* Global variables */
 #define DELIM = " "
 
+/* Structures */
 extern int value;
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -39,9 +42,11 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/* Fucntions */
+
 int is_num(char *token);
 void _push(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int line_number);
-
+void free_dlistint(stack_t *head);
 
 #endif
