@@ -35,6 +35,8 @@ int main(int arc, char *arv[])
 			continue;
 		}
 		i = 0;
+		if (strcmp_num(buff) == 0)
+			token = "#";
 		while (i < 13)
 		{
 			if (strcmp(token, ins_arr[i].opcode) == 0)

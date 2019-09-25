@@ -61,5 +61,5 @@ void _mod(stack_t **stack, unsigned int line_number);
 void free_dlistint(stack_t *head);
 void simple_err(int del_coden, char *arv);
 void free_err(FILE *file, char *bff, stack_t *stk, int lne, int cde, char *tok);
-
+int strcmp_num(char *str);
 #endif

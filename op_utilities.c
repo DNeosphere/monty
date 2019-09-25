@@ -23,4 +23,19 @@ int is_num(char *token)
 	}
 	return (res);
 }
+/**
+  * strcmp_num - Compare the first element of string with a #
+  * @str: The string
+  *
+  * Return: On success 1.
+  * On error, -1 is returned, and errno is set appropriately.
+  */
+int strcmp_num(char *str)
+{
+	char cmp = str[0];
 
+	if (cmp == '#')
+		return (0);
+	else
+		return (1);
+}
