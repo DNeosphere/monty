@@ -2,7 +2,6 @@
 FILE *usage_error(int arc, char *arv)
 {
 	FILE *file_op;
-	char *needle;
 
 	if (arc != 2)
 		simple_err(0, arv);
