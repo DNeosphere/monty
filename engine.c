@@ -39,7 +39,7 @@ int main(int arc, char *arv[])
 			{
 				if (strcmp(token, "push") == 0)
 				{token_push = strtok(NULL, " \t\n\r");
-					if (is_num(token_push) == 0)
+					if (!token_push || is_num(token_push) == 0)
 						free_err(file_op, buff, stack, line, 0, token);
 					value = atoi(token_push);
 				}
