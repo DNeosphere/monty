@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- *  - adds a new item to the top of a stack
+ *  _pop - a new item to the top of a stack
  * @stack: pointer to the top of the stack
  * @line_number: line counter
  */

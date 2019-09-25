@@ -18,7 +18,8 @@ FILE *usage_error(int arc, char *arv)
  */
 int main(int arc, char *arv[])
 {
-	instruction_t ins_arr[] = {{"push", _push}, {"pall", _pall}, {"pint", _pint}, {"pop", _pop}};
+	instruction_t ins_arr[] = {{"push", _push}, {"pall", _pall}, {"pint", _pint},
+	{"pop", _pop}};
 	FILE *file_op;
 	stack_t *stack = NULL;
 	size_t size = 30;
