@@ -8,10 +8,9 @@
 #include <fcntl.h>
 
 /* Global variables */
-#define DELIM = " "
+extern int value;
 
 /* Structures */
-extern int value;
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer

@@ -1,5 +1,4 @@
 #include "monty.h"
-int value;
 /**
  * main - engine to integrate the monty interpreter
  * @arc: argument count
