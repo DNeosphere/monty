@@ -73,7 +73,7 @@ void free_dlistint(stack_t *head)
 void simple_err(int del_code, char *arv)
 {
 	if (del_code == 0)
-		fprintf(stderr, "USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty %s\n", arv);
 	else if (del_code == 1)
 		fprintf(stderr, "Error: Can't open file %s\n", arv);
 	exit(EXIT_FAILURE);
