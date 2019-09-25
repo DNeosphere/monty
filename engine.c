@@ -1,4 +1,15 @@
 #include "monty.h"
+FILE *usage_error(int arc, char *arv)
+{
+	FILE *file_op;
+
+	if (arc != 2)
+		simple_err(0, arv);
+	file_op = fopen(arv, "r");
+	if (!file_op)
+		simple_err(1, arv);
+	return (file_op);
+}
 /**
  * main - engine to integrate the monty interpreter
  * @arc: argument count
@@ -14,11 +25,7 @@ int main(int arc, char *arv[])
 	char *token, *token_push, *buff = NULL;
 	int i = 0, line = 1;
 
-	if (arc != 2)
-		simple_err(0, arv[1]);
-	file_op = fopen(arv[1], "r");
-	if (!file_op)
-		simple_err(1, arv[1]);
+	file_op = usage_error(arc, arv[1]);
 	while (getline(&buff, &size, file_op) != EOF)
 	{token = strtok(buff, " \t\n\r");
 		if (token == NULL)
