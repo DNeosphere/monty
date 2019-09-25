@@ -1,4 +1,5 @@
 #include "monty.h"
+int value;
 /**
  * main - engine to integrate the monty interpreter
  * @arc: argument count
@@ -9,18 +10,26 @@ int main(int arc, char *arv[])
 {
 	instruction_t ins_arr[] = {{"push", _push}, {"pall", _pall}};
 	stack_t *stack = NULL;
-	int file_op, i = 0, line = 1;
+	FILE *file_op;
+	int i = 0, line = 1;
 	char *buff, *token, *token_push;
-	size_t *n = 30;
+	size_t size = 30;
 
 	if (arc != 2)
-		printf("USAGE: monty file");
-	file_op = open(arv[1], RDONLY);
-	if (file_op == -1)
-		printf("Error: Can't open file %s", arv[1]);
-	while (getline(&buff, n, file_op))
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
+	file_op = fopen(arv[1], "r");
+	if (!file_op)
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", arv[1]);
+		exit(EXIT_FAILURE);
+	}
+	while (getline(&buff, &size, file_op) != EOF)
 	{
 		token = strtok(buff, " \t\n\r");
+		i = 0;
 		while (i < 3)
 		{
 			if (strcmp(token, ins_arr[i].opcode) == 0)
@@ -29,13 +38,20 @@ int main(int arc, char *arv[])
 				{
 					token_push = strtok(NULL, " \t\n\r");
 					if (is_num(token_push) == 0)
-						printf("L%d: usage: push integer", line);
+					{
+						fprintf(stderr, "L%d: usage: push integer\n", line);
+						exit(EXIT_FAILURE);
+					}
 					value = atoi(token_push);
 				}
 				ins_arr[i].f(&stack, line);
+				break;
 			}
-			else if (i == 2)
-				printf("L%d: unknown instruction %s", line, token);
+			else if (i == 1)
+			{
+				fprintf(stderr, "L%d: unknown instruction %s\n", line, token);
+				exit(EXIT_FAILURE);
+			}
 			i++;
 		}
 		line++;

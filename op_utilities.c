@@ -1,4 +1,10 @@
 #include "monty.h"
+/**
+ * is_num - Verify if the string is a number
+ * @token: String to verify
+ *
+ * Return: Return a int
+ */
 
 int is_num(char *token)
 {
