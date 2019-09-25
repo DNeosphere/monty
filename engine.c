@@ -18,7 +18,7 @@ FILE *usage_error(int arc, char *arv)
  */
 int main(int arc, char *arv[])
 {
-	instruction_t ins_arr[] = {{"push", _push}, {"pall", _pall}, {"pint", _pint}};
+	instruction_t ins_arr[] = {{"push", _push}, {"pall", _pall}, {"pint", _pint}, {"pop", _pop}};
 	FILE *file_op;
 	stack_t *stack = NULL;
 	size_t size = 30;
@@ -46,7 +46,7 @@ int main(int arc, char *arv[])
 				ins_arr[i].f(&stack, line);
 				break;
 			}
-			else if (i == 2)
+			else if (i == 3)
 				free_err(file_op, buff, stack, line, 1, token);
 			i++;
 		}
