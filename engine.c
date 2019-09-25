@@ -19,7 +19,7 @@ FILE *usage_error(int arc, char *arv)
 int main(int arc, char *arv[])
 {
 	instruction_t ins_arr[] = {{"push", _push}, {"pall", _pall}, {"pint", _pint},
-	{"pop", _pop}};
+				   {"pop", _pop}, {"add", _add}, {"swap", _swap}};
 	FILE *file_op;
 	stack_t *stack = NULL;
 	size_t size = 30;
@@ -34,7 +34,7 @@ int main(int arc, char *arv[])
 			continue;
 		}
 		i = 0;
-		while (i < 4)
+		while (i < 6)
 		{
 			if (strcmp(token, ins_arr[i].opcode) == 0)
 			{
@@ -47,7 +47,7 @@ int main(int arc, char *arv[])
 				ins_arr[i].f(&stack, line);
 				break;
 			}
-			else if (i == 3)
+			else if (i == 5)
 				free_err(file_op, buff, stack, line, 1, token);
 			i++;
 		}
