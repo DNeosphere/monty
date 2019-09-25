@@ -48,7 +48,7 @@ int main(int arc, char *arv[])
 				ins_arr[i].f(&stack, line);
 				break;
 			}
-			else if (i == 11)
+			else if (i == 10)
 				free_err(file_op, buff, stack, line, 1, token);
 			i++;
 		}
