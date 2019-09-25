@@ -35,7 +35,7 @@ int main(int arc, char *arv[])
 			continue;
 		}
 		i = 0;
-		while (i < 7)
+		while (i < 12)
 		{
 			if (strcmp(token, ins_arr[i].opcode) == 0)
 			{
@@ -48,7 +48,7 @@ int main(int arc, char *arv[])
 				ins_arr[i].f(&stack, line);
 				break;
 			}
-			else if (i == 6)
+			else if (i == 11)
 				free_err(file_op, buff, stack, line, 1, token);
 			i++;
 		}
