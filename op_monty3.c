@@ -100,7 +100,7 @@ void _rotr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *aux;
 
-	if (*stack != NULL || (*stack)->next != NULL)
+	if (*stack != NULL && (*stack)->next != NULL)
 	{
 		aux = *stack;
 		while (aux)
