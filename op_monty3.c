@@ -90,3 +90,29 @@ void _pstr(stack_t **stack, unsigned int line_number)
 		putchar(10);
 	}
 }
+
+/**
+ *  _rotr - rotates the stack to the bottom
+ * @stack: pointer to the top of the stack
+ * @line_number: line counter
+ */
+void _rotr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *aux;
+
+	if (*stack != NULL || (*stack)->next != NULL)
+	{
+		aux = *stack;
+		while (aux)
+		{
+			if (!aux->next->next)
+			{
+				value = aux->next->n;
+				free(aux->next);
+				aux->next = NULL;
+			}
+			aux = aux->next;
+		}
+		_push(stack, line_number);
+	}
+}
