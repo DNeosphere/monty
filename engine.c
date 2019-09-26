@@ -24,32 +24,24 @@ int main(int arc, char *arv[])
 	{"mod", _mod}, {"#", _nop}, {"rotr", _rotr}, {"rotl", _rotl}, {NULL, NULL}};
 	FILE *file_op = usage_error(arc, arv[1]);
 	stack_t *stack = NULL;
-	size_t size = 30;
 	char *token, *token_push, *buff = NULL;
-	int i = 0, line = 1;
+	size_t i = 0, line = 1, size = Buffsize;
 
 	value[1] = 0;
 	while (getline(&buff, &size, file_op) != EOF)
 	{token = strtok(buff, " \t\n\r");
 		if (token == NULL)
 		{line++;
-			continue;
-		}
+			continue; }
 		i = 0;
 		if (strcmp_num(buff) == 0)
 			token = "#";
 		if (strcmp(token, "stack") == 0)
-		{
-			line++;
-			value[1] = 0;
-			continue;
-		}
+		{line++, value[1] = 0;
+			continue; }
 		else if (strcmp(token, "queue") == 0)
-		{
-			line++;
-			value[1] = 1;
-			continue;
-		}
+		{line++, value[1] = 1;
+			continue; }
 		while (ins_arr[i].opcode != NULL)
 		{
 			if (strcmp(token, ins_arr[i].opcode) == 0)
@@ -58,20 +50,15 @@ int main(int arc, char *arv[])
 				{token_push = strtok(NULL, " \t\n\r");
 					if (!token_push || is_num(token_push) == 0)
 						free_err(file_op, buff, stack, line, 0, token);
-					value[0] = atoi(token_push);
-				}
+					value[0] = atoi(token_push); }
 				ins_arr[i].f(&stack, line);
-				break;
-			}
+				break; }
 			else if (!ins_arr[i + 1].opcode)
 				free_err(file_op, buff, stack, line, 1, token);
-			i++;
-		}
-		line++;
-	}
+			i++; }
+		line++; }
 	fclose(file_op), free_dlistint(stack), free(buff);
-	return (0);
-}
+	return (0); }
 /**
  * free_dlistint - frees memory from a dlinked list
  * @head: pointer to the first node

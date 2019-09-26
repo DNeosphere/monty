@@ -6,7 +6,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-
+#define Buffsize 30
 /* Global variables */
 extern int value[2];
 
