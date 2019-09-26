@@ -62,3 +62,31 @@ void _pchar(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 }
+/**
+ *  _pstr - Print the chars of a stack with ASCII value
+ * @stack: pointer to the top of the stack
+ * @line_number: line counter
+ */
+void _pstr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *aux;
+	int code;
+	(void)line_number;
+
+	if (!*stack)
+		putchar(10);
+	else
+	{
+		aux = *stack;
+		while (aux)
+		{
+			code = aux->n;
+			if (code > 0 && code <= 127)
+				putchar(code);
+			else
+				break;
+			aux = aux->next;
+		}
+		putchar(10);
+	}
+}
