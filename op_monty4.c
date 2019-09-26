@@ -11,13 +11,12 @@ void _rotl(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 
 
-	if (*stack != NULL || stack != NULL || (*stack)->next != NULL)
-		return;
-
-	n = temp->n;
-	delete_dnodeint_at_index(stack, 0);
-	add_dnodeint_end(stack, n);
-
+	if ((*stack != NULL) && (stack != NULL) && ((*stack)->next != NULL))
+	{
+		n = temp->n;
+		delete_dnodeint_at_index(stack, 0);
+		add_dnodeint_end(stack, n);
+	}
 
 }
 /**
