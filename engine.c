@@ -21,7 +21,7 @@ int main(int arc, char *arv[])
 	instruction_t ins_arr[] = {{"push", _push}, {"pall", _pall}, {"pint", _pint},
 	{"nop", _nop}, {"pop", _pop}, {"add", _add}, {"swap", _swap}, {"sub", _sub},
 	{"div", _div}, {"mul", _mul}, {"pchar", _pchar}, {"pstr", _pstr},
-	{"mod", _mod}, {"#", _nop}, {NULL, NULL}}, {"rotr", _rotr}, {"rotl", _rotl};
+	{"mod", _mod}, {"#", _nop}, {"rotr", _rotr}, {"rotl", _rotl}, {NULL, NULL}};
 	FILE *file_op = usage_error(arc, arv[1]);
 	stack_t *stack = NULL;
 	size_t size = 30;
