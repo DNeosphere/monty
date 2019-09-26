@@ -105,11 +105,12 @@ void _rotr(stack_t **stack, unsigned int line_number)
 		aux = *stack;
 		while (aux)
 		{
-			if (!aux->next->next)
+			if (!aux->next)
 			{
-				value = aux->next->n;
-				free(aux->next);
-				aux->next = NULL;
+				value = aux->n;
+				aux->prev->next = NULL;
+				free(aux);
+				break;
 			}
 			aux = aux->next;
 		}
