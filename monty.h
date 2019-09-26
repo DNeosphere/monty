@@ -62,6 +62,8 @@ void _mod(stack_t **stack, unsigned int line_number);
 void _rotr(stack_t **stack, unsigned int line_number);
 void _rotl(stack_t **stack, unsigned int line_number);
 
+stack_t *add_dnodeint_end(stack_t **head, int n);
+stack_t *insert_dnodeint_at_index(stack_t **h, unsigned int idx, int n)
 void free_dlistint(stack_t *head);
 void simple_err(int del_coden, char *arv);
 void free_err(FILE *file, char *bff, stack_t *stk, int lne, int cde, char *tok);
