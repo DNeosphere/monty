@@ -28,6 +28,7 @@ int main(int arc, char *arv[])
 	char *token, *token_push, *buff = NULL;
 	int i = 0, line = 1;
 
+	value[1] = 0;
 	while (getline(&buff, &size, file_op) != EOF)
 	{token = strtok(buff, " \t\n\r");
 		if (token == NULL)
@@ -37,6 +38,18 @@ int main(int arc, char *arv[])
 		i = 0;
 		if (strcmp_num(buff) == 0)
 			token = "#";
+		if (strcmp(token, "stack") == 0)
+		{
+			line++;
+			value[1] = 0;
+			continue;
+		}
+		else if (strcmp(token, "queue") == 0)
+		{
+			line++;
+			value[1] = 1;
+			continue;
+		}
 		while (ins_arr[i].opcode != NULL)
 		{
 			if (strcmp(token, ins_arr[i].opcode) == 0)

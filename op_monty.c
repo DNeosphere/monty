@@ -9,19 +9,25 @@ void _push(stack_t **stack, unsigned int line_number)
 	stack_t *n_node;
 	(void)line_number;
 
-	n_node = malloc(sizeof(stack_t));
-	if (n_node == NULL)
+	if (value[1] == 0)
 	{
-		fprintf(stderr, "Error: malloc failed");
-		exit(EXIT_FAILURE);
-	}
-	n_node->n = value[0];
-	n_node->prev = NULL;
-	n_node->next = *stack;
+		n_node = malloc(sizeof(stack_t));
+		if (n_node == NULL)
+		{
+			fprintf(stderr, "Error: malloc failed");
+			exit(EXIT_FAILURE);
+		}
+		n_node->n = value[0];
+		n_node->prev = NULL;
+		n_node->next = *stack;
 
-	if (*stack != NULL)
-		(*stack)->prev = n_node;
-	*stack = n_node;
+		if (*stack != NULL)
+			(*stack)->prev = n_node;
+		*stack = n_node;
+	}
+
+	else if (value[1] == 1)
+		add_dnodeint_end(stack, value[0]);
 }
 /**
  * _pall - print all elements of a stack
