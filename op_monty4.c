@@ -8,12 +8,13 @@ void _rotl(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack;
 	int n;
+	(void)line_number;
 
 	if (stack != NULL || (*stack)->next != NULL)
 	{
 		n = temp->n;
 		delete_dnodeint_at_index(stack, 0);
-		add_dnode_int_end(stack, n);
+		add_dnodeint_end(stack, n);
 	}
 
 }
@@ -69,7 +70,7 @@ stack_t *add_dnodeint_end(stack_t **head, int n)
 	stack_t *temp, *new_node;
 
 	temp = *head;
-	new_node = malloc(sizeof(dlistint_t));
+	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 		return (NULL);
 	new_node->n = n;
