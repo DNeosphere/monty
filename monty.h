@@ -8,7 +8,7 @@
 #include <fcntl.h>
 
 /* Global variables */
-extern int value;
+extern int value[2];
 
 /* Structures */
 /**
@@ -42,7 +42,7 @@ typedef struct instruction_s
 } instruction_t;
 
 /* Fucntions */
-int value;
+int value[2];
 int is_num(char *token);
 void _push(stack_t **stack, unsigned int line_number);
 void _pop(stack_t **stack, unsigned int line_number);

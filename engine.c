@@ -45,7 +45,7 @@ int main(int arc, char *arv[])
 				{token_push = strtok(NULL, " \t\n\r");
 					if (!token_push || is_num(token_push) == 0)
 						free_err(file_op, buff, stack, line, 0, token);
-					value = atoi(token_push);
+					value[0] = atoi(token_push);
 				}
 				ins_arr[i].f(&stack, line);
 				break;

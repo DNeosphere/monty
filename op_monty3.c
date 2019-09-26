@@ -107,7 +107,7 @@ void _rotr(stack_t **stack, unsigned int line_number)
 		{
 			if (!aux->next)
 			{
-				value = aux->n;
+				value[0] = aux->n;
 				aux->prev->next = NULL;
 				free(aux);
 				break;
