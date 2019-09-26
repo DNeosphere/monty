@@ -21,7 +21,7 @@ int main(int arc, char *arv[])
 	instruction_t ins_arr[] = {{"push", _push}, {"pall", _pall}, {"pint", _pint},
 	{"nop", _nop}, {"pop", _pop}, {"add", _add}, {"swap", _swap}, {"sub", _sub},
 	{"div", _div}, {"mul", _mul}, {"pchar", _pchar}, {"pstr", _pstr},
-	{"mod", _mod}, {"#", _nop}};
+	{"mod", _mod}, {"#", _nop}, {NULL, NULL}};
 	FILE *file_op = usage_error(arc, arv[1]);
 	stack_t *stack = NULL;
 	size_t size = 30;
@@ -37,7 +37,7 @@ int main(int arc, char *arv[])
 		i = 0;
 		if (strcmp_num(buff) == 0)
 			token = "#";
-		while (i < 15)
+		while (ins_arr[i].opcode != NULL)
 		{
 			if (strcmp(token, ins_arr[i].opcode) == 0)
 			{
@@ -50,7 +50,7 @@ int main(int arc, char *arv[])
 				ins_arr[i].f(&stack, line);
 				break;
 			}
-			else if (i == 13)
+			else if (!ins_arr[i + 1].opcode)
 				free_err(file_op, buff, stack, line, 1, token);
 			i++;
 		}
